@@ -1,43 +1,74 @@
-# 🚢 Titanic - Exploratory Data Analysis (EDA)
+# 🚢 Titanic: Hayatta Kalma Tahmini (Machine Learning Projesi)
 
-Bu proje, Titanic veri seti üzerinde yapılan temel keşifsel veri analizlerini (EDA) içermektedir. Amaç, yolcu verileri üzerinden hayatta kalma oranlarını etkileyen faktörleri incelemek ve veri bilimi yetkinliğini geliştirmektir.
+Bu proje, Titanic yolcularının hayatta kalıp kalmadığını tahmin etmeye yönelik bir makine öğrenmesi uygulamasıdır. Veri, [Kaggle Titanic Competition](https://www.kaggle.com/competitions/titanic) sayfasından alınmıştır ve başlangıç seviyesindeki veri bilimi projelerine örnek teşkil eder.
 
-## 📁 Dosya İçeriği
+## 🔍 Problem Tanımı
 
-- `titanic_analysis.ipynb` → Jupyter Notebook dosyası (analizlerin yer aldığı dosya)
-- `train.csv` → Eğitim veri seti
-- `test.csv` → Test veri seti
-- `gender_submission.csv` → Örnek gönderim dosyası
+Titanic kazasında hayatta kalma ihtimali, kişinin özelliklerine göre (yaş, cinsiyet, bilet sınıfı vb.) değişkenlik göstermiştir. Bu projede amaç, yolcuların verilerine bakarak bir kişinin hayatta kalıp kalmadığını tahmin eden bir model geliştirmektir.
 
-## 📊 Kullanılan Teknikler
+## 📦 Kullanılan Veri Setleri
 
-- Kategorik ve sayısal değişkenlerin dağılım analizi
-- Eksik verilerin tespiti ve doldurulması
-- Görselleştirme (bar chart, histogram, boxplot)
-- Gruplama ve ortalama karşılaştırmaları
-- Temel veri ön işleme adımları
+- `train.csv`: Modelin eğitildiği etiketli veri (Survived bilgisi var)
+- `test.csv`: Tahmin yapılacak etiketlenmemiş veri (Survived bilgisi yok)
+- `gender_submission.csv`: Kaggle’ın örnek gönderim dosyası (şablon)
 
-## 🧰 Kullanılan Kütüphaneler
+## 🛠 Kullanılan Kütüphaneler
 
-- `pandas`
-- `numpy`
-- `matplotlib`
+- pandas
+- numpy
+- matplotlib / seaborn (EDA için)
+- scikit-learn
 
-## 🚀 Geliştirme Fırsatları
+## 🧪 Yapılan Aşamalar
 
-> Bu proje temel analizlerle sınırlıdır. Aşağıdaki adımlarla daha da geliştirilebilir:
+### 1. Veri Analizi (EDA)
 
-- Feature engineering (örneğin: `Title`, `FamilySize`, `IsAlone`)
-- Kategorik değişkenlerin sayısal hale getirilmesi
-- Makine öğrenmesi modeli ile hayatta kalma tahmini yapılması
-- Sonuçların `submission.csv` olarak dışa aktarılması
+- Eksik verilerin tespiti ve analizi
+- Cinsiyet, yaş, sınıf gibi değişkenlerin hayatta kalmaya etkisi
+- Görselleştirme ile öngörü çıkarımı
 
-## 📌 Veri Seti Kaynağı
+### 2. Veri Ön İşleme
 
-Veriler [Kaggle Titanic Competition](https://www.kaggle.com/competitions/titanic) üzerinden alınmıştır.
+- Eksik değerlerin doldurulması
+- Kategorik verilerin sayısallaştırılması
+- Yeni değişken üretimi (`FamilySize`, `IsAlone`)
+- Gereksiz sütunların çıkarılması (`Name`, `Ticket`, `Cabin`)
+
+### 3. Modelleme
+
+- `Logistic Regression` modeli ile ilk tahminler
+- Model doğruluk skorlarının ölçülmesi (`accuracy`, `classification_report`)
+- `test.csv` üzerinde tahmin yapılması
+
+### 4. Sonuçların Kaydedilmesi
+
+- Tahminler `submission.csv` dosyasına kaydedildi
+- Dosya formatı Kaggle yarışması ile uyumlu
+
+## 📊 Örnek Tahmin Formatı
+
+- PassengerId,Survived
+- 892,0
+- 893,1
+- 894,0
+
+## ✅ Sonraki Geliştirme Fikirleri
+
+- Random Forest, XGBoost gibi daha güçlü modellerle karşılaştırma
+- `Title`, `FareBand`, `AgeBand` gibi yeni özellik mühendisliği denemeleri
+- GridSearchCV ile hiperparametre optimizasyonu
+- Kaggle’da puan artırmaya yönelik denemeler
+
+## 📁 Proje Yapısı
+
+- titanic_project/
+- train.csv
+- test.csv
+- gender_submission.csv
+- submission.csv
+- titanic_model.ipynb
+- README.md
 
 ## 👤 Yazar
 
-**Hüseyin Can Akkaya**
-
-- 📍 Türkiye
+- Hüseyin Akkaya
